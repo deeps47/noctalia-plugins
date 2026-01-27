@@ -58,6 +58,8 @@ Item {
       return mouseArea.containsMouse ? Color.mHover : Style.capsuleColor
     }
     radius: Style.radiusL
+    border.color: Style.capsuleBorderColor
+    border.width: Style.capsuleBorderWidth
 
     RowLayout {
       id: contentRow
