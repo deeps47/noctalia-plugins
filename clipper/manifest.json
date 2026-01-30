@@ -20,7 +20,8 @@
   },
   "metadata": {
     "defaultSettings": {
-      "position": "Bottom"
+      "position": "Bottom",
+      "enableAutoPaste": true
     }
   }
 }

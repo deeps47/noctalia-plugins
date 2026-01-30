@@ -15,6 +15,15 @@ Item {
     // Plugin API (injected by PluginPanelSlot)
     property var pluginApi: null
 
+    // Helper to auto-paste
+    function performPasteAction() {
+        // Check if explicitly disabled (false), otherwise default to true
+        if (root.pluginApi?.pluginSettings?.enableAutoPaste !== false) {
+            // Wait 200ms for focus to switch, then simulate Ctrl+V
+            Quickshell.execDetached(["sh", "-c", "sleep 0.2 && wtype -M ctrl -M shift -k v -m shift -m ctrl"]);
+        }
+    }
+
     // Process for ToDo IPC calls
     Process {
         id: todoIpcProcess
@@ -124,6 +133,7 @@ Item {
                 ClipboardService.copyToClipboard(item.id);
                 if (pluginApi) {
                     pluginApi.closePanel(screen);
+                    root.performPasteAction();
                 }
             }
         }
@@ -479,6 +489,7 @@ Item {
                             ClipboardService.copyToClipboard(item.id);
                             if (root.pluginApi) {
                                 root.pluginApi.closePanel(screen);
+                                root.performPasteAction();
                             }
                         }
                     }
@@ -605,6 +616,7 @@ Item {
                         ClipboardService.copyToClipboard(clipboardId);
                         if (root.pluginApi) {
                             root.pluginApi.closePanel(screen);
+                            root.performPasteAction();
                         }
                     }
 
