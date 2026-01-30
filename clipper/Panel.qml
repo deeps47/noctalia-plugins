@@ -20,7 +20,7 @@ Item {
         // Check if explicitly disabled (false), otherwise default to true
         if (root.pluginApi?.pluginSettings?.enableAutoPaste !== false) {
             // Wait 200ms for focus to switch, then simulate Ctrl+V
-            Quickshell.execDetached(["sh", "-c", "sleep 0.2 && wtype -M ctrl -M shift -k v -m shift -m ctrl"]);
+            Quickshell.execDetached(["sh", "-c", "sleep 0.4 && wtype -M ctrl -M shift -k v -m shift -m ctrl"]);
         }
     }
 
